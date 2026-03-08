@@ -2,7 +2,20 @@ import { updateSession } from '@/lib/supabase/proxy'
 import { type NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  return await updateSession(request)
+  // Only run Supabase auth for protected and auth-related routes
+  if (
+    request.nextUrl.pathname.startsWith('/protected') ||
+    request.nextUrl.pathname.startsWith('/auth') ||
+    request.nextUrl.pathname.startsWith('/dashboard') ||
+    request.nextUrl.pathname.startsWith('/orders') ||
+    request.nextUrl.pathname.startsWith('/admin') ||
+    request.nextUrl.pathname.startsWith('/payment') ||
+    request.nextUrl.pathname.startsWith('/leaderboard')
+  ) {
+    return await updateSession(request)
+  }
+
+  return undefined
 }
 
 export const config = {
