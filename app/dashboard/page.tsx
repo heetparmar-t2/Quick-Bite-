@@ -49,6 +49,13 @@ export default function DashboardPage() {
     fetchCategories()
   }, [])
 
+  useEffect(() => {
+    console.log('[v0] Menu items:', menuItems)
+    console.log('[v0] Categories:', categories)
+    console.log('[v0] Selected category:', selectedCategory)
+    console.log('[v0] Filtered items:', filteredItems)
+  }, [menuItems, categories, selectedCategory, filteredItems])
+
   const fetchMenu = async () => {
     try {
       const response = await fetch('/api/menu')

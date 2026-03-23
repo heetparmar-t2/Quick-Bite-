@@ -8,7 +8,7 @@ export async function GET() {
     // Get all menu items with their categories
     const { data: menuItems, error } = await supabase
       .from('menu_items')
-      .select('*, categories(name)')
+      .select('id, name, description, price, category_id, image_url, is_available')
       .eq('is_available', true)
       .order('category_id')
 
