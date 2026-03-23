@@ -48,6 +48,10 @@ export function SpecialOffersBanner() {
   if (isLoading || offers.length === 0 || dismissed) return null
 
   const offer = offers[currentOfferIndex]
+  
+  // Safety check: if offer is undefined or missing required fields, don't render
+  if (!offer || !offer.discount_type) return null
+  
   const discountDisplay = 
     offer.discount_type === 'percentage'
       ? `${offer.discount_value}% OFF`
