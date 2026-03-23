@@ -53,8 +53,7 @@ export default function DashboardPage() {
     console.log('[v0] Menu items:', menuItems)
     console.log('[v0] Categories:', categories)
     console.log('[v0] Selected category:', selectedCategory)
-    console.log('[v0] Filtered items:', filteredItems)
-  }, [menuItems, categories, selectedCategory, filteredItems])
+  }, [menuItems, categories, selectedCategory])
 
   const fetchMenu = async () => {
     try {
